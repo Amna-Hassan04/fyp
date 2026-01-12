@@ -1,6 +1,8 @@
 import { supabase } from './supabaseClient';
 import React, { useState, useEffect } from 'react';
 import { Camera, Upload, MapPin, Clock, Sparkles, Menu, X, ChevronRight, Star, Lock, User, LogOut, History } from 'lucide-react';
+import { curateImage } from "./api/curatorApi"; 
+import CuratorResult from './components/CuratorResult'; // Adjust the path based on your file structure
 // Mock Auth Context
 const AuthContext = React.createContext();
 
@@ -167,7 +169,7 @@ const HomePage = ({ setCurrentPage }) => {
       id: 'taxila',
       name: 'Taxila',
       description: 'Ancient Buddhist city and UNESCO World Heritage Site',
-      image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800',
+      image: 'https://unsplash.com/photos/a-very-old-city-with-a-lot-of-ruins-khWqt4JYej4',
       era: '6th Century BCE'
     },
     {
@@ -430,14 +432,21 @@ const SignupPage = ({ setCurrentPage }) => {
     </div>
   );
 };
-
 // Upload Artifact Page
 const UploadPage = ({ setCurrentPage }) => {
+  console.log("UploadPage rendering"); // Debug rendering
+  
   const { user } = useAuth();
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+
+  // Log when result changes
+  useEffect(() => {
+    console.log("Result state changed:", result);
+  }, [result]);
 
   const canUpload = user?.isPremium || (user?.uploadsToday || 0) < 3;
 
@@ -447,6 +456,7 @@ const UploadPage = ({ setCurrentPage }) => {
       setFile(selectedFile);
       setPreview(URL.createObjectURL(selectedFile));
       setResult(null);
+      setError(null);
     }
   };
 
@@ -515,7 +525,7 @@ const UploadPage = ({ setCurrentPage }) => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Upload an image</h3>
                 <p className="text-gray-600 mb-4">PNG, JPG up to 10MB</p>
                 <span className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold inline-block hover:bg-amber-700 transition">
-                  Choose File
+                  Choose File  
                 </span>
               </div>
               <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" disabled={!canUpload} />
@@ -538,6 +548,12 @@ const UploadPage = ({ setCurrentPage }) => {
             </div>
           )}
 
+          {error && (
+            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800">{error}</p>
+            </div>
+          )}
+
           {loading && (
             <div className="text-center py-8">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-amber-600 border-t-transparent"></div>
@@ -545,59 +561,29 @@ const UploadPage = ({ setCurrentPage }) => {
             </div>
           )}
 
-          {result && (
-            <div className="mt-8 space-y-6">
-              <div className="border-t border-gray-200 pt-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Analysis Results</h3>
-
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-amber-50 p-4 rounded-lg">
-                    <p className="text-sm text-amber-800 font-semibold mb-1">Civilization</p>
-                    <p className="text-lg font-bold text-gray-900">{result.civilization}</p>
-                  </div>
-                  <div className="bg-amber-50 p-4 rounded-lg">
-                    <p className="text-sm text-amber-800 font-semibold mb-1">Era</p>
-                    <p className="text-lg font-bold text-gray-900">{result.era}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Historical Context</h4>
-                    <p className="text-gray-700">{result.story}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Usage & Purpose</h4>
-                    <p className="text-gray-700">{result.usage}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Cultural Significance</h4>
-                    <p className="text-gray-700">{result.significance}</p>
-                  </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <p className="text-sm text-blue-800">
-                      <span className="font-semibold">AI Confidence:</span> {(result.confidence * 100).toFixed(0)}%
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 mt-6">
-                  <button onClick={() => { setFile(null); setPreview(null); setResult(null); }} className="flex-1 bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition">
-                    Analyze Another
-                  </button>
-                  <button onClick={() => setCurrentPage('profile')} className="px-6 py-3 border-2 border-gray-300 rounded-lg font-semibold hover:bg-gray-50 transition">
-                    View History
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+         {result && (
+  <div>
+    {/* Use the error-handled rendering function */}
+    {renderResult()}
+    
+    <div className="flex gap-4 mt-6">
+      <button onClick={() => { setFile(null); setPreview(null); setResult(null); }} className="flex-1 bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition">
+        Analyze Another
+      </button>
+      <button onClick={() => setCurrentPage('profile')} className="px-6 py-3 border-2 border-gray-300 rounded-lg font-semibold hover:bg-gray-50 transition">
+        View History
+      </button>
+    </div>
+  </div>
+)}
         </div>
       </div>
     </div>
   );
 };
 
+
+// Heritage Sites List
 const SitesPage = ({ setCurrentPage }) => {
   const sites = [
     { id: 'taxila', name: 'Taxila', description: 'Ancient Buddhist city and UNESCO World Heritage Site', era: '6th Century BCE', image: 'https://plus.unsplash.com/premium_photo-1694475128245-999b1ae8a44e?w=800' },
@@ -910,9 +896,32 @@ const AboutPage = () => {
 };
 
 // Main App Component
+// Main App Component
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Initialize from URL hash or default to 'home'
+    const hash = window.location.hash.slice(1);
+    return hash || 'home';
+  });
   const { loading } = useAuth();
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = (e) => {
+      const hash = window.location.hash.slice(1);
+      setCurrentPage(hash || 'home');
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Update URL when page changes
+  useEffect(() => {
+    if (window.location.hash.slice(1) !== currentPage) {
+      window.history.pushState(null, '', `#${currentPage}`);
+    }
+  }, [currentPage]);
 
   if (loading) {
     return (
