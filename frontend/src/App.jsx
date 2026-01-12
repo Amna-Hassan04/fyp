@@ -1,8 +1,9 @@
 import { supabase } from './supabaseClient';
 import React, { useState, useEffect } from 'react';
 import { Camera, Upload, MapPin, Clock, Sparkles, Menu, X, ChevronRight, Star, Lock, User, LogOut, History } from 'lucide-react';
-import { curateImage } from "./api/curatorApi"; 
+import { curateImage } from "./api/curatorApi";
 import CuratorResult from './components/CuratorResult'; // Adjust the path based on your file structure
+
 // Mock Auth Context
 const AuthContext = React.createContext();
 
@@ -165,60 +166,86 @@ const HomePage = ({ setCurrentPage }) => {
   const { user } = useAuth();
 
   const sites = [
-    {
-      id: 'taxila',
-      name: 'Taxila',
-      description: 'Ancient Buddhist city and UNESCO World Heritage Site',
-      image: 'https://unsplash.com/photos/a-very-old-city-with-a-lot-of-ruins-khWqt4JYej4',
-      era: '6th Century BCE'
-    },
-    {
-      id: 'mohenjo-daro',
-      name: 'Mohenjo-daro',
-      description: 'One of the world\'s earliest urban settlements',
-      image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800',
-      era: '2500 BCE'
-    },
-    {
-      id: 'harappa',
-      name: 'Harappa',
-      description: 'Major center of the Indus Valley Civilization',
-      image: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=800',
-      era: '3300 BCE'
-    }
-  ];
+      {
+        id: 'taxila',
+        name: 'Taxila',
+        description: 'Ancient Buddhist city and UNESCO World Heritage Site',
+        image: 'https://plus.unsplash.com/premium_photo-1694475128245-999b1ae8a44e?w=800',
+        era: '6th Century BCE'
+      },
+      {
+        id: 'mohenjo-daro',
+        name: 'Mohenjo-daro',
+        description: 'One of the world\'s earliest urban settlements',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Mohenjodaro_-_view_of_the_stupa_mound.JPG/1280px-Mohenjodaro_-_view_of_the_stupa_mound.JPG?w=800',
+        era: '2500 BCE'
+      },
+      {
+        id: 'harappa',
+        name: 'Harappa',
+        description: 'Major center of the Indus Valley Civilization',
+        image: 'https://cdn1.byjus.com/wp-content/uploads/2018/11/free-ias-prep/2017/01/13062915/Urban-planning-of-the-Harappan.jpg?w=800',
+        era: '3300 BCE'
+      },
+      {
+        id: 'katas-raj',
+        name: 'Katas Raj Temples',
+        description: 'Ancient complex of Hindu temples connected by a sacred pond',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Katas_Raj_Temples_2.JPG/1280px-Katas_Raj_Temples_2.JPG?w=800',
+        era: '7th Century CE'
+      },
+      {
+        id: 'makli',
+        name: 'Makli Necropolis',
+        description: 'One of the largest funerary sites in the world with stunning stone carvings',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/View_of_Makli_by_Usman_Ghani_%28cropped%29.jpg?w=800',
+        era: '14th Century CE'
+      },
+      {
+        id: 'ranikot',
+        name: 'Ranikot Fort',
+        description: 'Known as the Great Wall of Sindh, the largest fort in the world',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg/1280px-Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg',
+        era: '17th Century CE'
+      }
+    ];
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Explore Pakistan's Ancient Civilizations with AI
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Your personal guide to South Asian heritage. Upload artifacts, discover stories, and experience history through cutting-edge AI technology.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => setCurrentPage(user ? 'upload' : 'signup')}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-700 transition flex items-center justify-center space-x-2"
-              >
-                <Camera className="w-5 h-5" />
-                <span>Upload an Artifact</span>
-              </button>
-              <button
-                onClick={() => setCurrentPage('sites')}
-                className="bg-white text-amber-600 border-2 border-amber-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-50 transition flex items-center justify-center space-x-2"
-              >
-                <MapPin className="w-5 h-5" />
-                <span>Explore Sites</span>
-              </button>
+      <div className="bg-white">
+        {/* Updated Hero Section with Unsplash Background */}
+        <div
+          className="relative bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3)), url('https://images.unsplash.com/photo-1680464140223-eab28aa2fcdc?auto=format&fit=crop&q=80&w=2071')`
+          }}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                Explore Pakistan's Ancient Civilizations with AI
+              </h1>
+              <p className="text-xl text-gray-800 mb-8 font-medium">
+                Your personal guide to South Asian heritage. Upload artifacts, discover stories, and experience history through cutting-edge AI technology.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => setCurrentPage(user ? 'upload' : 'signup')}
+                  className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-700 transition flex items-center justify-center space-x-2 shadow-lg"
+                >
+                  <Camera className="w-5 h-5" />
+                  <span>Upload an Artifact</span>
+                </button>
+                <button
+                  onClick={() => setCurrentPage('sites')}
+                  className="bg-white text-amber-600 border-2 border-amber-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-50 transition flex items-center justify-center space-x-2 shadow-lg"
+                >
+                  <MapPin className="w-5 h-5" />
+                  <span>Explore Sites</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -435,7 +462,7 @@ const SignupPage = ({ setCurrentPage }) => {
 // Upload Artifact Page
 const UploadPage = ({ setCurrentPage }) => {
   console.log("UploadPage rendering"); // Debug rendering
-  
+
   const { user } = useAuth();
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -461,29 +488,47 @@ const UploadPage = ({ setCurrentPage }) => {
   };
 
   const handleAnalyze = async () => {
-      if (!file || !user) return;
-      setLoading(true);
+    if (!file || !user) return;
+    setLoading(true);
 
-      // Simulate AI response (Replace this part later with your actual AI API call)
-      setTimeout(async () => {
-        const resultData = {
-          user_id: user.id, // Links the artifact to the logged-in user
-          civilization: 'Gandhara',
-          era: '1st-5th Century CE',
-          story: 'This artifact represents the Gandhara school of Buddhist art...',
-          confidence: 0.87
-        };
+    setTimeout(async () => {
+      // This matches the structure in CuratorResult.jsx
+      const resultData = {
+        user_id: user.id,
+        interpretations: [
+          {
+            title: "Gandhara Bodhisattva",
+            description: "This artifact represents the Gandhara school of Buddhist art, which flourished in ancient Pakistan. It shows Greco-Buddhist artistic styles combining Hellenistic and Indian influences.",
+            era: "1st-5th Century CE",
+            material: "Schist Stone",
+            confidence: 0.87
+          },
+          {
+            title: "Buddhist Relief",
+            description: "A secondary interpretation suggests this could be part of a larger frieze depicting the life of Buddha found in the Swat valley region.",
+            era: "2nd Century CE",
+            material: "Grey Schist",
+            confidence: 0.65
+          }
+        ]
+      };
 
-        // SAVE TO SUPABASE
-        const { error } = await supabase.from('artifacts').insert([resultData]);
+      // SAVE TO SUPABASE
+      const { error } = await supabase.from('artifacts').insert([{
+        user_id: user.id,
+        civilization: resultData.interpretations[0].title, // Using the first title as civilization
+        era: resultData.interpretations[0].era,
+        story: resultData.interpretations[0].description,
+        confidence: resultData.interpretations[0].confidence
+      }]);
 
-        if (error) {
-          console.error("Error saving to DB:", error.message);
-        } else {
-          setResult(resultData);
-        }
-        setLoading(false);
-      }, 2000);
+      if (error) {
+        console.error("Error saving to DB:", error.message);
+      } else {
+        setResult(resultData);
+      }
+      setLoading(false);
+    }, 2000);
   };
 
   if (!user) {
@@ -509,7 +554,7 @@ const UploadPage = ({ setCurrentPage }) => {
           <p className="text-xl text-gray-600">Discover the story behind your artifact</p>
           {!user.isPremium && (
             <div className="mt-4 inline-flex items-center space-x-2 bg-amber-50 text-amber-800 px-4 py-2 rounded-lg">
-              <span className="font-semibold">{3 - (user.uploadsToday || 0)} uploads remaining today</span>
+             {/* ... <span className="font-semibold">{3 - (user.uploadsToday || 0)} uploads remaining today</span>  */}
               <button onClick={() => setCurrentPage('profile')} className="text-amber-600 hover:text-amber-700 underline">
                 Upgrade to Premium
               </button>
@@ -525,7 +570,7 @@ const UploadPage = ({ setCurrentPage }) => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Upload an image</h3>
                 <p className="text-gray-600 mb-4">PNG, JPG up to 10MB</p>
                 <span className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold inline-block hover:bg-amber-700 transition">
-                  Choose File  
+                  Choose File
                 </span>
               </div>
               <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" disabled={!canUpload} />
@@ -564,8 +609,8 @@ const UploadPage = ({ setCurrentPage }) => {
          {result && (
   <div>
     {/* Use the error-handled rendering function */}
-    {renderResult()}
-    
+    <CuratorResult result={result} />
+
     <div className="flex gap-4 mt-6">
       <button onClick={() => { setFile(null); setPreview(null); setResult(null); }} className="flex-1 bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition">
         Analyze Another
@@ -588,10 +633,10 @@ const SitesPage = ({ setCurrentPage }) => {
   const sites = [
     { id: 'taxila', name: 'Taxila', description: 'Ancient Buddhist city and UNESCO World Heritage Site', era: '6th Century BCE', image: 'https://plus.unsplash.com/premium_photo-1694475128245-999b1ae8a44e?w=800' },
     { id: 'mohenjo-daro', name: 'Mohenjo-daro', description: 'One of the world\'s earliest urban settlements', era: '2500 BCE', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Mohenjodaro_-_view_of_the_stupa_mound.JPG/1280px-Mohenjodaro_-_view_of_the_stupa_mound.JPG?w=800' },
-    { id: 'harappa', name: 'Harappa', description: 'Major center of the Indus Valley Civilization', era: '3300 BCE', image: 'https://www.worldatlas.com/r/w960-q80/upload/a8/04/4d/shutterstock-1075655459.jpg?w=800' },
+    { id: 'harappa', name: 'Harappa', description: 'Major center of the Indus Valley Civilization', era: '3300 BCE', image: 'https://cdn1.byjus.com/wp-content/uploads/2018/11/free-ias-prep/2017/01/13062915/Urban-planning-of-the-Harappan.jpg?w=800' },
     { id: 'katas-raj', name: 'Katas Raj Temples', description: 'Ancient complex of Hindu temples connected by a sacred pond', era: '7th Century CE', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Katas_Raj_Temples_2.JPG/1280px-Katas_Raj_Temples_2.JPG?w=800' },
     { id: 'makli', name: 'Makli Necropolis', description: 'One of the largest funerary sites in the world with stunning stone carvings', era: '14th Century CE', image: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/View_of_Makli_by_Usman_Ghani_%28cropped%29.jpg?w=800' },
-    { id: 'ranikot', name: 'Ranikot Fort', description: 'Known as the Great Wall of Sindh, the largest fort in the world', era: '17th Century CE', image: 'https://en.wikipedia.org/wiki/Ranikot_Fort#/media/File:Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg?w=800' }
+    { id: 'ranikot', name: 'Ranikot Fort', description: 'Known as the Great Wall of Sindh, the largest fort in the world', era: '17th Century CE', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg/1280px-Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg' }
   ];
 
   return (
@@ -634,7 +679,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
       description: 'Taxila is one of the most important archaeological sites in Pakistan and a UNESCO World Heritage Site. It was an ancient center of learning, Buddhism, and trade.',
       history: 'Founded in the 6th century BCE, Taxila flourished as a major city of the ancient world for nearly 1,000 years. It was conquered by Alexander the Great in 326 BCE and later became a center of Buddhist learning under the Mauryan Empire. The city was renowned for its university, which attracted scholars from across Asia.',
       significance: 'Taxila represents the meeting point of various civilizations including Persian, Greek, Central Asian, and Indian cultures. Its ruins reveal sophisticated urban planning, Buddhist monasteries, stupas, and Greco-Buddhist art.',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26553.447273486824!2d72.78259707431642!3d33.74870367374368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf8e6f4e7f25%3A0x2c3c5e9c5e4c5f25!2sTaxila%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13264.4442125134!2d72.8123!3d33.7460!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfa00989f6e69b%3A0xc0747e4529f79603!2sTaxila%20Museum!5e0!3m2!1sen!2spk!4v1700000000000',
       image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200'
     },
     'mohenjo-daro': {
@@ -644,7 +689,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
       description: 'Mohenjo-daro was one of the largest cities of the ancient Indus Valley Civilization and is considered one of the world\'s earliest major urban settlements.',
       history: 'Built around 2500 BCE, Mohenjo-daro was a sophisticated city with advanced urban planning, including a grid layout, covered drainage systems, and multi-story buildings. The city was mysteriously abandoned around 1900 BCE, possibly due to climate change or shifts in river patterns.',
       significance: 'The site reveals remarkable achievements in urban planning, sanitation, and architecture. Artifacts found here, including the famous "Dancing Girl" bronze sculpture and numerous seals, provide insights into one of the world\'s oldest civilizations.',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7056.123456789012!2d68.13!3d27.32!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x394c8df0f0f0f0f0%3A0x1234567890abcdef!2sMohenjo-daro%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3513.567!2d68.135!3d27.329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39343399e5555555%3A0x5555555555555555!2sMohenjo-daro!5e0!3m2!1sen!2spk!4v1700000000000',
       image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200'
     },
     'harappa': {
@@ -654,8 +699,38 @@ const SitePage = ({ siteId, setCurrentPage }) => {
       description: 'Harappa was a major urban center of the Indus Valley Civilization and gives the Harappan Civilization its name.',
       history: 'Harappa was one of the first cities to be discovered of the Indus Valley Civilization. The city shows evidence of advanced planning with a citadel, lower town, and sophisticated drainage systems. It was a major trading hub with connections extending to Mesopotamia and Central Asia.',
       significance: 'Harappa provides crucial evidence of early urbanization in South Asia. The site has yielded thousands of artifacts including seals, pottery, and tools that demonstrate the sophistication of Bronze Age civilization in the region.',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6789.123456789012!2d72.86!3d30.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393e8f0f0f0f0f0f%3A0xabcdef1234567890!2sHarappa%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3423.456!2d72.862!3d30.628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922961d66860f2b%3A0x63391993427f7173!2sHarappa!5e0!3m2!1sen!2spk!4v1700000000000',
       image: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=1200'
+    },
+    'katas-raj': {
+      name: 'Katas Raj Temples',
+      era: '7th - 10th Century CE',
+      location: 'Chakwal District, Punjab',
+      description: 'A complex of ancient Hindu temples connected by walkways surrounding a sacred pond believed to be created by the tears of Lord Shiva.',
+      history: 'The site has been a place of holy pilgrimage for over a thousand years. It features Kashmiri-style architecture and has been visited by famous historical figures, including the Mughal Emperor Babur.',
+      significance: 'Katas Raj is a symbol of the religious diversity of ancient Pakistan. The temples are significant for their unique architecture and the sacred pond, which is a focal point for Hindu pilgrims from across South Asia.',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3372.234!2d72.965!3d32.728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3920e8b23395988d%3A0x95971a8f600f1c3a!2sKatas%20Raj%20Temples!5e0!3m2!1sen!2spk!4v1700000000000',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Katas_Raj_Temples_2.JPG/1280px-Katas_Raj_Temples_2.JPG'
+    },
+    'makli': {
+      name: 'Makli Necropolis',
+      era: '14th - 18th Century CE',
+      location: 'Thatta, Sindh',
+      description: 'One of the largest funerary sites in the world, containing approximately 500,000 to 1 million tombs spread over 10 square kilometers.',
+      history: 'It served as a major burial ground for kings, queens, saints, and scholars of the Samma, Arghun, Tarkhan, and Mughal dynasties. The stone carvings here are considered some of the best in Islamic funerary art.',
+      significance: 'A UNESCO World Heritage Site, Makli offers a panoramic view of the social and political history of Sindh through its exquisite brick and stone architecture and intricate geometric designs.',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.324!2d67.902!3d24.756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x394cc26100000001%3A0xf64f514555555555!2sMakli%20Necropolis!5e0!3m2!1sen!2spk!4v1700000000000',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/View_of_Makli_by_Usman_Ghani_%28cropped%29.jpg'
+    },
+    'ranikot': {
+      name: 'Ranikot Fort',
+      era: '17th Century CE (Current Form)',
+      location: 'Jamshoro District, Sindh',
+      description: 'Commonly known as the "Great Wall of Sindh," Ranikot is believed to be the world\'s largest fort, with a circumference of approximately 35 kilometers.',
+      history: 'The origins of the fort are ancient, with some parts dating back significantly, though the current massive fortifications were largely rebuilt in the early 19th century by the Talpur Mirs.',
+      significance: 'The fort is an engineering marvel that follows the natural contours of the hilly Laki range. It remains one of the most mysterious and grand defensive structures in South Asia.',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.543!2d67.812!3d25.893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39369d7890909091%3A0x909090909090909!2sRanikot%20Fort!5e0!3m2!1sen!2spk!4v1700000000000',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg/1280px-Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg'
     }
   };
 
@@ -789,14 +864,30 @@ const ProfilePage = ({ setCurrentPage }) => {
             </div>
 
             {!user?.is_premium && (
-              <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-xl p-6 text-white mb-8">
-                <div className="flex items-start space-x-4">
-                  <Star className="w-8 h-8 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">Upgrade to Premium</h3>
-                    <button className="bg-white text-amber-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition">
-                      Upgrade Now
-                    </button>
+              <div className="relative overflow-hidden bg-gradient-to-r from-amber-600 to-orange-600 rounded-lg p-5 text-white mb-6 shadow-sm">
+                <div className="absolute -right-2 -bottom-2 opacity-10">
+                  <Star className="w-20 h-20" />
+                </div>
+
+                <div className="flex items-center space-x-4 relative z-10">
+                  <div className="bg-white/20 p-2 rounded-md backdrop-blur-sm shrink-0">
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </div>
+
+                  <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center space-x-2 mb-0.5">
+                        <h3 className="font-bold text-lg">HeritageAI Premium</h3>
+                        <span className="bg-amber-100 text-amber-900 text-[9px] font-bold uppercase tracking-tight px-1.5 py-0.5 rounded-full">
+                          In Development
+                        </span>
+                      </div>
+                      <p className="text-amber-50 text-xs max-w-sm">
+                        Unlimited uploads and AR site tours are coming soon.
+                      </p>
+                    </div>
+
+
                   </div>
                 </div>
               </div>
