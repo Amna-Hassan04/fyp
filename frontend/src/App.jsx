@@ -1,86 +1,29 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< Updated upstream
+import { createClient } from '@supabase/supabase-js';
 import { Camera, Upload, MapPin, Clock, Sparkles, Menu, X, ChevronRight, Star, Lock, User, LogOut, History } from 'lucide-react';
 import { curateImage } from "./api/curatorApi"; 
 import CuratorResult from './components/CuratorResult'; // Adjust the path based on your file structure
-// Mock Auth Context
-const AuthContext = React.createContext();
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // 1. Check for an active session when the app loads
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-
-    // 2. Listen for login/logout changes automatically
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const login = async (email, password) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password }); //
-    if (error) alert(error.message);
-  };
-
-  const signup = async (name, email, password) => {
-    // 1. Create the user in Supabase Auth
-    const { data, error } = await supabase.auth.signUp({
-    email,
-    password
-    });
-
-    if (error) {
-    alert(error.message);
-    return;
-    }
-
-    // 2. If signup worked, manually create the profile row
-    if (data.user) {
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .insert([
-          {
-            id: data.user.id, // Links the profile to the Auth user ID
-            full_name: name,
-            email: email,
-            is_premium: false,
-            uploads_today: 0
-          }
-        ]);
-
-        if (profileError) {
-          console.error("Error creating profile:", profileError.message);
-        } else {
-          alert("Check your email for a confirmation link!");
-          setCurrentPage('login');
-        }
-      }
-    };
-
-
-  const logout = async () => {
-    await supabase.auth.signOut(); //
-  };
-
-  return (
-    <AuthContext.Provider value={{ user, login, signup, logout, loading }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-const useAuth = () => React.useContext(AuthContext);
+// Initialize Supabase client
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+import Footer from './components/Footer';
+import LoginPage from './pages/LoginPage';
+import SitesPage from './pages/SitesPage';
+import ProfilePage from './pages/ProfilePage';
+import AboutPage from './pages/AboutPage';
+import BlogPage from './pages/BlogPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import SubmitArticlePage from './pages/SubmitArticlePage';
+import Pricing from './pages/Pricing';
 
 // Navigation Component
-const Navbar = ({ currentPage, setCurrentPage }) => {
+const NavbarComponent = ({ currentPage, setCurrentPage }) => {
   const { user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -301,137 +244,6 @@ const HomePage = ({ setCurrentPage }) => {
   );
 };
 
-// Login Page
-const LoginPage = ({ setCurrentPage }) => {
-  const { login } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(email, password);
-    setCurrentPage('home');
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
-          <p className="text-gray-600 mt-2">Sign in to continue exploring</p>
-        </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              placeholder="your@email.com"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              placeholder="••••••••"
-              required
-            />
-          </div>
-          <button type="submit" className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition">
-            Sign In
-          </button>
-        </form>
-        <p className="text-center text-gray-600 mt-6">
-          Don't have an account?{' '}
-          <button onClick={() => setCurrentPage('signup')} className="text-amber-600 font-semibold hover:text-amber-700">
-            Sign Up
-          </button>
-        </p>
-      </div>
-    </div>
-  );
-};
-
-// Signup Page
-const SignupPage = ({ setCurrentPage }) => {
-  const { signup } = useAuth();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    signup(name, email, password);
-    setCurrentPage('home');
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-          <p className="text-gray-600 mt-2">Start your heritage exploration journey</p>
-        </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              placeholder="John Doe"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              placeholder="your@email.com"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              placeholder="••••••••"
-              required
-            />
-          </div>
-          <button type="submit" className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition">
-            Create Account
-          </button>
-        </form>
-        <p className="text-center text-gray-600 mt-6">
-          Already have an account?{' '}
-          <button onClick={() => setCurrentPage('login')} className="text-amber-600 font-semibold hover:text-amber-700">
-            Sign In
-          </button>
-        </p>
-      </div>
-    </div>
-  );
-};
 // Upload Artifact Page
 const UploadPage = ({ setCurrentPage }) => {
   console.log("UploadPage rendering"); // Debug rendering
@@ -563,8 +375,7 @@ const UploadPage = ({ setCurrentPage }) => {
 
          {result && (
   <div>
-    {/* Use the error-handled rendering function */}
-    {renderResult()}
+    <CuratorResult result={result} />
     
     <div className="flex gap-4 mt-6">
       <button onClick={() => { setFile(null); setPreview(null); setResult(null); }} className="flex-1 bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition">
@@ -583,49 +394,8 @@ const UploadPage = ({ setCurrentPage }) => {
 };
 
 
-// Heritage Sites List
-const SitesPage = ({ setCurrentPage }) => {
-  const sites = [
-    { id: 'taxila', name: 'Taxila', description: 'Ancient Buddhist city and UNESCO World Heritage Site', era: '6th Century BCE', image: 'https://plus.unsplash.com/premium_photo-1694475128245-999b1ae8a44e?w=800' },
-    { id: 'mohenjo-daro', name: 'Mohenjo-daro', description: 'One of the world\'s earliest urban settlements', era: '2500 BCE', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Mohenjodaro_-_view_of_the_stupa_mound.JPG/1280px-Mohenjodaro_-_view_of_the_stupa_mound.JPG?w=800' },
-    { id: 'harappa', name: 'Harappa', description: 'Major center of the Indus Valley Civilization', era: '3300 BCE', image: 'https://www.worldatlas.com/r/w960-q80/upload/a8/04/4d/shutterstock-1075655459.jpg?w=800' },
-    { id: 'katas-raj', name: 'Katas Raj Temples', description: 'Ancient complex of Hindu temples connected by a sacred pond', era: '7th Century CE', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Katas_Raj_Temples_2.JPG/1280px-Katas_Raj_Temples_2.JPG?w=800' },
-    { id: 'makli', name: 'Makli Necropolis', description: 'One of the largest funerary sites in the world with stunning stone carvings', era: '14th Century CE', image: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/View_of_Makli_by_Usman_Ghani_%28cropped%29.jpg?w=800' },
-    { id: 'ranikot', name: 'Ranikot Fort', description: 'Known as the Great Wall of Sindh, the largest fort in the world', era: '17th Century CE', image: 'https://en.wikipedia.org/wiki/Ranikot_Fort#/media/File:Ranikot_Fort_-_The_Great_Wall_of_Sindh.jpg?w=800' }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">Heritage Sites</h1>
-        <p className="text-xl text-gray-600 mb-12 text-center">Explore Pakistan's ancient civilizations</p>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {sites.map(site => (
-            <div key={site.id} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer" onClick={() => setCurrentPage(`site-${site.id}`)}>
-              <div className="h-64 bg-gray-200 overflow-hidden">
-                <img src={site.image} alt={site.name} className="w-full h-full object-cover" />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-2xl font-bold text-gray-900">{site.name}</h2>
-                  <span className="text-sm text-amber-600 font-semibold">{site.era}</span>
-                </div>
-                <p className="text-gray-600 mb-4 line-clamp-2">{site.description}</p>
-                <button className="text-amber-600 font-semibold flex items-center space-x-1 hover:text-amber-700">
-                  <span>Explore Site</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
 // Individual Site Page
-const SitePage = ({ siteId, setCurrentPage }) => {
+const SiteDetailPage = ({ siteId, setCurrentPage }) => {
   const siteData = {
     'taxila': {
       name: 'Taxila',
@@ -721,205 +491,9 @@ const SitePage = ({ siteId, setCurrentPage }) => {
   );
 };
 
-// Profile Page
-const ProfilePage = ({ setCurrentPage }) => {
-  const { user } = useAuth();
-  const [history, setHistory] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // 1. Fetch real history from Supabase
-  useEffect(() => {
-    const fetchHistory = async () => {
-      if (!user) return;
-
-      const { data, error } = await supabase
-        .from('artifacts')
-        .select('*')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
-
-      if (!error) {
-        setHistory(data);
-      }
-      setLoading(false);
-    };
-
-    fetchHistory();
-  }, [user]);
-
-  // Use metadata name for real Supabase users
-  const displayName = user?.user_metadata?.full_name || "Heritage Explorer";
-
-  return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">My Profile</h1>
-
-        {/* Profile Card */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <div className="flex items-center space-x-4 mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center">
-              <span className="text-3xl font-bold text-white">
-                {displayName[0].toUpperCase()}
-              </span>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">{displayName}</h2>
-              <p className="text-gray-600">{user?.email}</p>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 pt-6">
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Account Type</p>
-                <div className="flex items-center space-x-2">
-                  <p className="text-lg font-bold text-gray-900">
-                    {user?.is_premium ? 'Premium' : 'Free'}
-                  </p>
-                  {!user?.is_premium && <Star className="w-5 h-5 text-gray-400" />}
-                </div>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Uploads Today</p>
-                <p className="text-lg font-bold text-gray-900">
-                  {user?.uploads_today || 0} / {user?.is_premium ? '∞' : '3'}
-                </p>
-              </div>
-            </div>
-
-            {!user?.is_premium && (
-              <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-xl p-6 text-white mb-8">
-                <div className="flex items-start space-x-4">
-                  <Star className="w-8 h-8 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">Upgrade to Premium</h3>
-                    <button className="bg-white text-amber-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition">
-                      Upgrade Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Upload History Section */}
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Upload History</h2>
-            <History className="w-6 h-6 text-gray-400" />
-          </div>
-
-          {loading ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600 mx-auto"></div>
-            </div>
-          ) : history.length > 0 ? (
-            <div className="space-y-4">
-              {history.map((item) => (
-                <div key={item.id} className="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-amber-100 rounded flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-amber-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">{item.civilization}</h4>
-                      <p className="text-sm text-gray-500">{item.era}</p>
-                    </div>
-                  </div>
-                  <button className="text-amber-600 hover:text-amber-700">
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <History className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-600 mb-4">No uploads yet</p>
-              <button
-                onClick={() => setCurrentPage('upload')}
-                className="text-amber-600 font-semibold hover:text-amber-700"
-              >
-                Upload Your First Artifact
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// About Page
-const AboutPage = () => {
-  return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">About HeritageAI</h1>
-
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
-          <p className="text-lg text-gray-700 mb-6">
-            HeritageAI is dedicated to making South Asian cultural heritage accessible to everyone. We combine cutting-edge artificial intelligence with rich historical knowledge to create immersive, educational experiences that bring ancient civilizations to life.
-          </p>
-
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Why HeritageAI?</h2>
-          <div className="space-y-4 mb-6">
-            <div className="flex items-start space-x-3">
-              <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-gray-700"><strong>Built for South Asia:</strong> Specialized knowledge of Pakistani and regional heritage sites</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-gray-700"><strong>AI-Powered:</strong> Instant artifact identification and historical context</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-gray-700"><strong>Accessible:</strong> Affordable pricing and free tier for students and educators</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-gray-700"><strong>Future-Ready:</strong> AR capabilities coming soon for immersive experiences</p>
-            </div>
-          </div>
-
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Technology</h2>
-          <p className="text-lg text-gray-700">
-            Our platform uses advanced computer vision and natural language processing to analyze artifacts and generate rich historical narratives. We've trained our models on extensive datasets of South Asian archaeological artifacts, ensuring accurate and culturally relevant information.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // Main App Component
-// Main App Component
-const App = () => {
-=======
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import UploadPage from './pages/UploadPage';
-import SitesPage from './pages/SitesPage';
-import SitePage from './pages/SitePage';
-import ProfilePage from './pages/ProfilePage';
-import AboutPage from './pages/AboutPage';
-import BlogPage from './pages/BlogPage';
-import ContactPage from './pages/ContactPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
-import SubmitArticlePage from './pages/SubmitArticlePage';
-import Pricing from './pages/Pricing';
-
 const AppContent = () => {
->>>>>>> Stashed changes
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.slice(1);
     return hash || 'home';
@@ -971,14 +545,14 @@ const AppContent = () => {
     if (currentPage === 'submit-article') return <SubmitArticlePage setCurrentPage={setCurrentPage} />;
     if (currentPage.startsWith('site-')) {
       const siteId = currentPage.replace('site-', '');
-      return <SitePage siteId={siteId} setCurrentPage={setCurrentPage} />;
+      return <SiteDetailPage siteId={siteId} setCurrentPage={setCurrentPage} />;
     }
     return <HomePage setCurrentPage={setCurrentPage} />;
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <NavbarComponent currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {renderPage()}
       <Footer setCurrentPage={setCurrentPage} />
     </div>
