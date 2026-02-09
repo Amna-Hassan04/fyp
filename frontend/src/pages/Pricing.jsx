@@ -1,3 +1,16 @@
+import React from 'react';
+
+const PricingPage = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 flex items-center justify-center">
+      <h2 className="text-4xl font-bold text-gray-900">Coming Soon <br></br>Stay tuned!</h2>
+    </div>
+  );
+};
+
+export default PricingPage;
+
+/* 
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 
@@ -89,7 +102,6 @@ const PricingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-3">
             Choose Your Heritage Journey
@@ -98,7 +110,6 @@ const PricingPage = () => {
             Unlock the secrets of South Asian heritage with AI-powered artifact identification
           </p>
 
-          {/* Billing Toggle */}
           <div className="inline-flex items-center bg-white rounded-lg p-1 shadow-md border border-amber-200">
             <button
               onClick={() => setBillingCycle('monthly')}
@@ -123,7 +134,6 @@ const PricingPage = () => {
           </div>
         </div>
 
-        {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {plans.map((plan, index) => (
             <div
@@ -134,14 +144,12 @@ const PricingPage = () => {
                   : 'border border-gray-200'
               }`}
             >
-              {/* Badge */}
               {plan.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 text-xs font-bold rounded-full">
                   {plan.badge}
                 </div>
               )}
 
-              {/* Plan Header */}
               <div className="mb-4">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {plan.name}
@@ -151,7 +159,6 @@ const PricingPage = () => {
                 </p>
               </div>
 
-              {/* Price */}
               <div className="mb-4">
                 <div className="flex items-baseline">
                   <span className="text-4xl font-bold text-gray-900">
@@ -165,7 +172,6 @@ const PricingPage = () => {
                 </div>
               </div>
 
-              {/* CTA Button */}
               <button
                 className={`w-full py-2.5 px-4 rounded-lg font-semibold transition-all mb-5 text-sm ${
                   plan.highlighted
@@ -179,10 +185,8 @@ const PricingPage = () => {
                 {plan.cta}
               </button>
 
-              {/* Divider */}
               <div className="border-t border-gray-200 mb-4"></div>
 
-              {/* API Calls Badge */}
               <div className="text-center mb-4 py-2">
                 <div className="text-2xl font-bold text-amber-600">
                   {plan.apiCalls}
@@ -197,7 +201,6 @@ const PricingPage = () => {
                 </div>
               </div>
 
-              {/* Features */}
               <div className="space-y-2.5">
                 {plan.features.map((feature, featureIndex) => (
                   <div
@@ -215,7 +218,6 @@ const PricingPage = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <div className="text-center bg-white border border-amber-200 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
             Need a Custom Solution?
@@ -237,3 +239,4 @@ const PricingPage = () => {
 };
 
 export default PricingPage;
+*/
