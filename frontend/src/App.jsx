@@ -680,7 +680,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
       history: 'Founded in the 6th century BCE, Taxila flourished as a major city of the ancient world for nearly 1,000 years. It was conquered by Alexander the Great in 326 BCE and later became a center of Buddhist learning under the Mauryan Empire. The city was renowned for its university, which attracted scholars from across Asia.',
       significance: 'Taxila represents the meeting point of various civilizations including Persian, Greek, Central Asian, and Indian cultures. Its ruins reveal sophisticated urban planning, Buddhist monasteries, stupas, and Greco-Buddhist art.',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13264.4442125134!2d72.8123!3d33.7460!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfa00989f6e69b%3A0xc0747e4529f79603!2sTaxila%20Museum!5e0!3m2!1sen!2spk!4v1700000000000',
-      image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200'
+      image: 'https://plus.unsplash.com/premium_photo-1694475128245-999b1ae8a44e?w=1200'
     },
     'mohenjo-daro': {
       name: 'Mohenjo-daro',
@@ -690,7 +690,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
       history: 'Built around 2500 BCE, Mohenjo-daro was a sophisticated city with advanced urban planning, including a grid layout, covered drainage systems, and multi-story buildings. The city was mysteriously abandoned around 1900 BCE, possibly due to climate change or shifts in river patterns.',
       significance: 'The site reveals remarkable achievements in urban planning, sanitation, and architecture. Artifacts found here, including the famous "Dancing Girl" bronze sculpture and numerous seals, provide insights into one of the world\'s oldest civilizations.',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3513.567!2d68.135!3d27.329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39343399e5555555%3A0x5555555555555555!2sMohenjo-daro!5e0!3m2!1sen!2spk!4v1700000000000',
-      image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Mohenjodaro_-_view_of_the_stupa_mound.JPG/1280px-Mohenjodaro_-_view_of_the_stupa_mound.JPG?w=800'
     },
     'harappa': {
       name: 'Harappa',
@@ -700,7 +700,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
       history: 'Harappa was one of the first cities to be discovered of the Indus Valley Civilization. The city shows evidence of advanced planning with a citadel, lower town, and sophisticated drainage systems. It was a major trading hub with connections extending to Mesopotamia and Central Asia.',
       significance: 'Harappa provides crucial evidence of early urbanization in South Asia. The site has yielded thousands of artifacts including seals, pottery, and tools that demonstrate the sophistication of Bronze Age civilization in the region.',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3423.456!2d72.862!3d30.628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922961d66860f2b%3A0x63391993427f7173!2sHarappa!5e0!3m2!1sen!2spk!4v1700000000000',
-      image: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=1200'
+      image: 'https://cdn1.byjus.com/wp-content/uploads/2018/11/free-ias-prep/2017/01/13062915/Urban-planning-of-the-Harappan.jpg?w=1200'
     },
     'katas-raj': {
       name: 'Katas Raj Temples',
