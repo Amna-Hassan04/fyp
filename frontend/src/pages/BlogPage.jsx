@@ -82,8 +82,8 @@ const BlogPage = () => {
           ))}
         </div>
 
-        {/* Write for Us Section */}
-        {/* <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl shadow-lg p-8 border-2 border-amber-200">
+        {/* Write for Us Section
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl shadow-lg p-8 border-2 border-amber-200">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Interested in Writing for Us?</h2>
             <p className="text-lg text-gray-700 mb-6">
@@ -123,10 +123,10 @@ const BlogPage = () => {
               </a>
             </div>
           </div>
-        </div> */}
+        </div> 
 
         {/* Newsletter Signup */}
-        {/* <div className="bg-white rounded-xl shadow-lg p-8 mt-12">
+       {/* <div className="bg-white rounded-xl shadow-lg p-8 mt-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Stay Updated</h2>
           <p className="text-gray-700 mb-6 text-center max-w-2xl mx-auto">
             Subscribe to our newsletter for the latest insights on AI, heritage preservation, and cultural discoveries from across South Asia.
@@ -141,7 +141,7 @@ const BlogPage = () => {
               Subscribe
             </button>
           </div>
-        </div>*/}
+        </div> */} 
       </div> 
     </div>
   );

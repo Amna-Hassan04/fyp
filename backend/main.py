@@ -14,7 +14,10 @@ app.add_middleware(
         "http://localhost:5173",  # Vite
         "http://localhost:3000",   # Create React App
         "http://127.0.0.1:5173",
-        "http://127.0.0.1:3000"
+        "http://127.0.0.1:3000",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
+        "https://heritage-ai-git-iqra-amna-hassan04s-projects.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],

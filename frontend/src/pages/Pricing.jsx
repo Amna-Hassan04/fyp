@@ -1,16 +1,16 @@
-import React from 'react';
+// import React from 'react';
 
-const PricingPage = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 flex items-center justify-center">
-      <h2 className="text-4xl font-bold text-gray-900">Coming Soon <br></br>Stay tuned!</h2>
-    </div>
-  );
-};
+// const PricingPage = () => {
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 flex items-center justify-center">
+//       <h2 className="text-4xl font-bold text-gray-900">Coming Soon <br></br>Stay tuned!</h2>
+//     </div>
+//   );
+// };
 
-export default PricingPage;
+// export default PricingPage;
 
-/* 
+
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 
@@ -239,4 +239,3 @@ const PricingPage = () => {
 };
 
 export default PricingPage;
-*/

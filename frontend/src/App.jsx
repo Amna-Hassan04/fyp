@@ -15,7 +15,9 @@ import TermsOfServicePage from './pages/TermsOfServicePage';
 import PricingPage from './pages/Pricing';
 import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutPage';
-
+import SubmitArticlePage from './pages/SubmitArticlePage';
+import WriteArticle from './pages/WriteArticle';
+import StayUpdated from './pages/StayUpdated';
 const AppContent = () => {
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.slice(1);
@@ -65,6 +67,9 @@ const AppContent = () => {
     if(currentPage==='terms') return < TermsOfServicePage  setCurrentPage={setCurrentPage} />
     if(currentPage==='privacy') return < PrivacyPolicyPage  setCurrentPage={setCurrentPage} />
       if(currentPage==='pricing') return < PricingPage  setCurrentPage={setCurrentPage} />
+      if(currentPage==='submit-article') return < SubmitArticlePage  setCurrentPage={setCurrentPage} />
+      if(currentPage==='write-article') return < WriteArticle  setCurrentPage={setCurrentPage} />
+        if(currentPage==='stay-updated') return < StayUpdated  setCurrentPage={setCurrentPage} />
 
     if (currentPage.startsWith('site-')) {
       const siteId = currentPage.replace('site-', '');

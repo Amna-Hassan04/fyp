@@ -115,13 +115,13 @@ const LoginPage = ({ setCurrentPage }) => {
               <input type="checkbox" className="rounded border-gray-300 text-amber-600 focus:ring-amber-500" />
               <span className="ml-2 text-gray-600">Remember me</span>
             </label>
-            <button
+            {/* <button
               type="button"
               onClick={() => setCurrentPage('forgot-password')}
               className="text-amber-600 hover:text-amber-700 font-medium"
             >
               Forgot password?
-            </button>
+            </button> */}
           </div>
 
           <button
