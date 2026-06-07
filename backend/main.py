@@ -56,5 +56,8 @@ async def curate_image(image: UploadFile = File(...)):
         print("❌ Error converting result:", e)
         raise
 
+from planner_router import router as planner_router
+app.include_router(planner_router)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

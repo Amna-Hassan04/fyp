@@ -8,9 +8,9 @@ import SignupPage from './pages/SignupPage';
 import UploadPage from './pages/UploadPage';
 import SitesPage from './pages/SitesPage';
 import SitePage from './pages/SitePage';
-import BlogPage from './pages/BlogPage'
+import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import PricingPage from './pages/Pricing';
 import ProfilePage from './pages/ProfilePage';
@@ -18,6 +18,8 @@ import AboutPage from './pages/AboutPage';
 import SubmitArticlePage from './pages/SubmitArticlePage';
 import WriteArticle from './pages/WriteArticle';
 import StayUpdated from './pages/StayUpdated';
+import TourPlannerPage from './pages/TourPlannerPage';
+
 const AppContent = () => {
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.slice(1);
@@ -60,16 +62,17 @@ const AppContent = () => {
     if (currentPage === 'signup') return <SignupPage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'upload') return <UploadPage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'sites') return <SitesPage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'planner') return <TourPlannerPage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'profile') return <ProfilePage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'about') return <AboutPage setCurrentPage={setCurrentPage} />;
-    if(currentPage==='blog') return <BlogPage setCurrentPage={setCurrentPage}/>
-    if(currentPage==='contact') return <ContactPage setCurrentPage={setCurrentPage} />
-    if(currentPage==='terms') return < TermsOfServicePage  setCurrentPage={setCurrentPage} />
-    if(currentPage==='privacy') return < PrivacyPolicyPage  setCurrentPage={setCurrentPage} />
-      if(currentPage==='pricing') return < PricingPage  setCurrentPage={setCurrentPage} />
-      if(currentPage==='submit-article') return < SubmitArticlePage  setCurrentPage={setCurrentPage} />
-      if(currentPage==='write-article') return < WriteArticle  setCurrentPage={setCurrentPage} />
-        if(currentPage==='stay-updated') return < StayUpdated  setCurrentPage={setCurrentPage} />
+    if (currentPage === 'blog') return <BlogPage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'contact') return <ContactPage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'terms') return <TermsOfServicePage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'privacy') return <PrivacyPolicyPage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'pricing') return <PricingPage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'submit-article') return <SubmitArticlePage setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'write-article') return <WriteArticle setCurrentPage={setCurrentPage} />;
+    if (currentPage === 'stay-updated') return <StayUpdated setCurrentPage={setCurrentPage} />;
 
     if (currentPage.startsWith('site-')) {
       const siteId = currentPage.replace('site-', '');

@@ -24,6 +24,16 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             {user && (
               <button onClick={() => setCurrentPage('upload')} className="text-gray-700 hover:text-amber-600 transition">Upload Artifact</button>
             )}
+            <button
+              onClick={() => setCurrentPage('planner')}
+              className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+                currentPage === 'planner'
+                  ? 'text-amber-600 border-b-2 border-amber-600'
+                  : 'text-gray-600 hover:text-amber-600'
+              }`}
+            >
+              Tour Planner
+            </button>
             <button onClick={() => setCurrentPage('about')} className="text-gray-700 hover:text-amber-600 transition">About</button>
           </div>
 
