@@ -3,7 +3,7 @@ import { Camera, MapPin, Upload, Sparkles, Clock, Compass, Layers, ChevronRight 
 import { useAuth } from '../contexts/AuthContext';
 
 // 1. Import your local images from the assets folder right here
-import uploadFeatureImg from '../assets/Image_story_narration.PNG';
+import uploadFeatureImg from '../assets/image_story_narration.PNG';
 import reconstructionFeatureImg from '../assets/image_reconstruction.PNG';
 
 // Reusable Craftsmanship Pattern Divider Component
