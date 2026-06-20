@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -19,6 +19,9 @@ import SubmitArticlePage from './pages/SubmitArticlePage';
 import WriteArticle from './pages/WriteArticle';
 import StayUpdated from './pages/StayUpdated';
 import TourPlannerPage from './pages/TourPlannerPage';
+
+// Lazy loading our high-performance WebAR Canvas
+const ArRestorationPage = lazy(() => import('./pages/ArRestorationPage'));
 
 const AppContent = () => {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -73,6 +76,19 @@ const AppContent = () => {
     if (currentPage === 'submit-article') return <SubmitArticlePage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'write-article') return <WriteArticle setCurrentPage={setCurrentPage} />;
     if (currentPage === 'stay-updated') return <StayUpdated setCurrentPage={setCurrentPage} />;
+
+    // 🚀 Register our brand new custom 'learn-ar' path state handler
+    if (currentPage === 'learn-ar') {
+      return (
+        <Suspense fallback={
+          <div className="min-h-screen flex items-center justify-center bg-zinc-900 text-amber-500">
+            <div className="animate-pulse text-lg font-semibold tracking-wider">INITIALIZING ALIGNMENT MATRIX...</div>
+          </div>
+        }>
+          <ArRestorationPage setCurrentPage={setCurrentPage} />
+        </Suspense>
+      );
+    }
 
     if (currentPage.startsWith('site-')) {
       const siteId = currentPage.replace('site-', '');

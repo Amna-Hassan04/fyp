@@ -2,9 +2,10 @@ import React from 'react';
 import { Camera, MapPin, Upload, Sparkles, Clock, Compass, Layers, ChevronRight } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-// 1. Import your local images from the assets folder right here
+// Import local images from the assets folder
 import uploadFeatureImg from '../assets/image_story_narration.png';
 import reconstructionFeatureImg from '../assets/image_reconstruction.png';
+import BuddhaPaintingImg from '../assets/taxila-mural-image.jpg';
 
 // Reusable Craftsmanship Pattern Divider Component
 const CraftsmanshipBorder = () => (
@@ -119,7 +120,7 @@ const HomePage = ({ setCurrentPage }) => {
       {/* Alternating Banners */}
       <div className="space-y-0">
 
-        {/* FEATURE 1: ARTIFACT IDENTIFICATION */}
+        {/* MODULE 01: ARTIFACT IDENTIFICATION */}
         <div className="relative bg-orange-500/[0.045] py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-fixed bg-center opacity-[0.22] pointer-events-none mix-blend-multiply"
@@ -162,7 +163,6 @@ const HomePage = ({ setCurrentPage }) => {
               <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xl space-y-4 max-w-sm mx-auto">
                 <div className="text-xs uppercase tracking-widest font-mono text-stone-500 border-b border-stone-200 pb-2">Image Processing Engine</div>
                 <div className="aspect-video w-full rounded-xl overflow-hidden bg-stone-100">
-                  {/* 2. Your custom feature image variable applied here */}
                   <img src={uploadFeatureImg} alt="Artifact upload feature capture workflow" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex justify-between items-center text-xs text-stone-500 font-mono pt-1">
@@ -177,7 +177,7 @@ const HomePage = ({ setCurrentPage }) => {
         {/* Craftsmanship Divider Line */}
         <CraftsmanshipBorder />
 
-        {/* FEATURE 2: UNCOVER CHRONICLES */}
+        {/* MODULE 02: UNCOVER CHRONICLES */}
         <div className="relative bg-amber-500/[0.04] py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-fixed bg-center opacity-[0.22] pointer-events-none mix-blend-multiply"
@@ -233,7 +233,7 @@ const HomePage = ({ setCurrentPage }) => {
         {/* Craftsmanship Divider Line */}
         <CraftsmanshipBorder />
 
-        {/* FEATURE 3: 2D RECONSTRUCTION */}
+        {/* MODULE 03: 2D RECONSTRUCTION */}
         <div className="relative bg-amber-600/[0.035] py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-fixed bg-center opacity-[0.22] pointer-events-none mix-blend-multiply"
@@ -267,7 +267,6 @@ const HomePage = ({ setCurrentPage }) => {
               <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xl space-y-4 max-w-sm mx-auto">
                 <div className="text-xs uppercase tracking-widest font-mono text-stone-500 border-b border-stone-200 pb-2">Generative Layer Renderer</div>
                 <div className="aspect-[4/3] w-full rounded-xl overflow-hidden bg-stone-900 border border-stone-200 relative">
-                  {/* 3. Your custom image variable applied here */}
                   <img src={reconstructionFeatureImg} alt="Generative architectural reconstruction mesh preview" className="w-full h-full object-cover opacity-80" />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent p-3 flex items-end">
                     <span className="font-mono text-[10px] text-amber-500 font-bold">Rendering Structural Wireframe...</span>
@@ -281,7 +280,7 @@ const HomePage = ({ setCurrentPage }) => {
         {/* Craftsmanship Divider Line */}
         <CraftsmanshipBorder />
 
-        {/* FEATURE 4: AGENTIC TOUR PLANNER */}
+        {/* MODULE 04: AGENTIC TOUR PLANNER */}
         <div className="relative bg-orange-500/[0.045] py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-fixed bg-center opacity-[0.22] pointer-events-none mix-blend-multiply"
@@ -339,6 +338,110 @@ const HomePage = ({ setCurrentPage }) => {
             </div>
           </div>
         </div>
+
+        {/* Craftsmanship Divider Line */}
+        <CraftsmanshipBorder />
+
+        {/* MODULE 05: WEBAR RECONSTRUCTION GAMIFICATION */}
+        <div className="relative bg-[#FAF4EB]/90 py-24 overflow-hidden border-t border-b border-amber-600/15">
+          <div
+            className="absolute inset-0 bg-cover bg-fixed bg-center opacity-[0.25] pointer-events-none mix-blend-multiply"
+            style={{ backgroundImage: `url('https://plus.unsplash.com/premium_photo-1694475128245-999b1ae8a44e?w=1200')` }}
+          ></div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div className="lg:col-span-7 space-y-6 bg-white/95 backdrop-blur-md p-8 rounded-2xl border border-orange-200/80 shadow-md shadow-amber-900/[0.03]">
+              <div className="inline-flex items-center space-x-2 bg-amber-600/10 border border-amber-600/20 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Module 05: Augmented Reality Integration</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-stone-900 font-sans leading-tight tracking-tight">
+                Learn with AR: Reassembling History
+              </h2>
+              <p className="text-stone-700 text-lg leading-relaxed">
+                Priceless stucco mural paintings discovered at the <strong>Jinnan Wali Dheri monastery in Taxila</strong> are heavily shattered, presenting massive visual challenges to museum visitors. HeritageAI introduces an interactive tool.
+              </p>
+              <p className="text-stone-600 font-sans font-light leading-relaxed text-base">
+                Our platform implements a custom computer vision pipeline using Mind-AR. Point your device camera directly at the fragmented artifact tray—the system matches the target image to launch an interactive puzzle challenge that makes historical learning active and engaging.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
+                  <div className="text-amber-700 font-bold mt-0.5">✓</div>
+                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Camera Feature Tracking</strong> Employs a pre-compiled target matrix to recognize the artifact's unique contours instantly.</p>
+                </div>
+                <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
+                  <div className="text-amber-700 font-bold mt-0.5">✓</div>
+                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Interactive Canvas Grid</strong> Uses an HTML5 canvas drawing matrix to handle piece shuffling and swapping dynamically.</p>
+                </div>
+              </div>
+              <div className="pt-2">
+                <button
+                  onClick={() => setCurrentPage('learn-ar')}
+                  className="bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 rounded-lg transition shadow-md flex items-center gap-2 group text-base"
+                >
+                  <span>Launch AR Experience ⚡</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition" />
+                </button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative">
+              <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xl space-y-4 max-w-sm mx-auto group">
+                <div className="text-xs uppercase tracking-widest font-mono text-stone-500 border-b border-stone-200 pb-2 flex justify-between">
+                  <span>WebXR Target Stream</span>
+                  <span className="text-amber-700 font-bold">IDX::04_GANDHARA</span>
+                </div>
+
+                {/* Container Workspace Frame */}
+                <div className="aspect-[4/3] w-full rounded-xl overflow-hidden bg-stone-950 border border-stone-200 relative shadow-inner">
+                  {/* Laser Grid Scan Line Animation */}
+                  <div className="absolute inset-x-0 h-0.5 bg-amber-500 shadow-[0_0_14px_#d97706] opacity-90 animate-[homeScanLine_3.5s_linear_infinite] z-10"></div>
+
+                  {/* Image Elements displaying inside window boundaries via object-contain properties */}
+                  <img
+                    src="/assets/restored-buddha.png"
+                    alt="AI Reconstructed Buddha Painting Matrix"
+                    className="w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out absolute inset-0 z-5 bg-stone-950"
+                  />
+                  <img
+                    src={BuddhaPaintingImg}
+                    alt="Fragmented baseline reference target profile"
+                    className="w-full h-full object-contain opacity-100 group-hover:opacity-0 transition-all duration-700 ease-in-out absolute inset-0 bg-stone-950"
+                  />
+
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 flex items-center justify-center z-10 pointer-events-none">
+                    <span className="absolute bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded border border-amber-600/40 font-mono text-[10px] text-amber-500 tracking-wider uppercase group-hover:scale-95 group-hover:opacity-0 transition-all duration-500">
+                      Matrix Scanner Active
+                    </span>
+                    <span className="absolute bg-emerald-950/80 backdrop-blur-sm px-3 py-1.5 rounded border border-emerald-500/40 font-mono text-[10px] text-emerald-400 tracking-wider uppercase scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                       AI Match Complete
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center text-[11px] text-stone-500 font-mono pt-1">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    Tracking Sync: OK
+                  </span>
+                  <span className="text-stone-500 group-hover:text-emerald-600 font-semibold transition-colors duration-300">
+                    Hover to Scan Frame
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CSS Animation Embed for the scanning indicator line */}
+        <style>{`
+          @keyframes homeScanLine {
+            0% { top: 0%; opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+          }
+        `}</style>
 
       </div>
 

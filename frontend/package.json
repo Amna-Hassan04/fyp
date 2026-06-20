@@ -12,8 +12,10 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.95.3",
     "@uiw/react-md-editor": "^4.1.1",
+    "aframe": "^1.7.1",
     "axios": "^1.13.2",
     "lucide-react": "^0.562.0",
+    "mind-ar": "^1.2.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

@@ -26,13 +26,23 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             )}
             <button
               onClick={() => setCurrentPage('planner')}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+              className={`text-gray-700 hover:text-amber-600 transition ${
                 currentPage === 'planner'
                   ? 'text-amber-600 border-b-2 border-amber-600'
                   : 'text-gray-600 hover:text-amber-600'
               }`}
             >
               Tour Planner
+            </button>
+            <button
+              onClick={() => setCurrentPage('learn-ar')}
+              className={`text-gray-700 hover:text-amber-600 transition ${
+                currentPage === 'learn-ar'
+                  ? 'text-amber-600 border-b-2 border-amber-600'
+                  : 'text-gray-600 hover:text-amber-600'
+              }`}
+            >
+              Learn with AR
             </button>
             <button onClick={() => setCurrentPage('about')} className="text-gray-700 hover:text-amber-600 transition">About</button>
           </div>
