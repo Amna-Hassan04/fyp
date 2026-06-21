@@ -44,7 +44,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             >
               Learn with AR
             </button>
-            <button onClick={() => setCurrentPage('about')} className="text-gray-700 hover:text-amber-600 transition">About</button>
+            
           </div>
 
           {/* User Menu */}
@@ -81,7 +81,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             <button onClick={() => { setCurrentPage('home'); setMobileMenuOpen(false); }} className="block w-full text-left text-gray-700 hover:text-amber-600">Home</button>
             <button onClick={() => { setCurrentPage('sites'); setMobileMenuOpen(false); }} className="block w-full text-left text-gray-700 hover:text-amber-600">Heritage Sites</button>
             {user && (
-              <button onClick={() => { setCurrentPage('upload'); setMobileMenuOpen(false); }} className="block w-full text-left text-gray-700 hover:text-amber-600">Upload Artifact</button>
+              <button onClick={() => { setCurrentPage('ar'); setMobileMenuOpen(false); }} className="block w-full text-left text-gray-700 hover:text-amber-600">Upload Artifact</button>
             )}
             <button onClick={() => { setCurrentPage('about'); setMobileMenuOpen(false); }} className="block w-full text-left text-gray-700 hover:text-amber-600">About</button>
             {user ? (
