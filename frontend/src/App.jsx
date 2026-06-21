@@ -80,6 +80,7 @@ const AppContent = () => {
       if(currentPage==='write-article') return < WriteArticle  setCurrentPage={setCurrentPage} />
         if(currentPage==='stay-updated') return < StayUpdated  setCurrentPage={setCurrentPage} />
         if (currentPage === 'ar') return <ARPage />;
+        if(currentPage==='learn-ar') return <ArRestorationPage setCurrentPage={setCurrentPage} />;
 
 
 
