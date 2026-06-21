@@ -18,6 +18,9 @@ import AboutPage from './pages/AboutPage';
 import SubmitArticlePage from './pages/SubmitArticlePage';
 import WriteArticle from './pages/WriteArticle';
 import StayUpdated from './pages/StayUpdated';
+import ARButton from './components/ARButton';
+import ARPage from './pages/ARPage';
+
 import TourPlannerPage from './pages/TourPlannerPage';
 
 // Lazy loading our high-performance WebAR Canvas
@@ -68,27 +71,20 @@ const AppContent = () => {
     if (currentPage === 'planner') return <TourPlannerPage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'profile') return <ProfilePage setCurrentPage={setCurrentPage} />;
     if (currentPage === 'about') return <AboutPage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'blog') return <BlogPage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'contact') return <ContactPage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'terms') return <TermsOfServicePage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'privacy') return <PrivacyPolicyPage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'pricing') return <PricingPage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'submit-article') return <SubmitArticlePage setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'write-article') return <WriteArticle setCurrentPage={setCurrentPage} />;
-    if (currentPage === 'stay-updated') return <StayUpdated setCurrentPage={setCurrentPage} />;
+    if(currentPage==='blog') return <BlogPage setCurrentPage={setCurrentPage}/>
+    if(currentPage==='contact') return <ContactPage setCurrentPage={setCurrentPage} />
+    if(currentPage==='terms') return < TermsOfServicePage  setCurrentPage={setCurrentPage} />
+    if(currentPage==='privacy') return < PrivacyPolicyPage  setCurrentPage={setCurrentPage} />
+      if(currentPage==='pricing') return < PricingPage  setCurrentPage={setCurrentPage} />
+      if(currentPage==='submit-article') return < SubmitArticlePage  setCurrentPage={setCurrentPage} />
+      if(currentPage==='write-article') return < WriteArticle  setCurrentPage={setCurrentPage} />
+        if(currentPage==='stay-updated') return < StayUpdated  setCurrentPage={setCurrentPage} />
+        if (currentPage === 'ar') return <ARPage />;
+
+
 
     // 🚀 Register our brand new custom 'learn-ar' path state handler
-    if (currentPage === 'learn-ar') {
-      return (
-        <Suspense fallback={
-          <div className="min-h-screen flex items-center justify-center bg-zinc-900 text-amber-500">
-            <div className="animate-pulse text-lg font-semibold tracking-wider">INITIALIZING ALIGNMENT MATRIX...</div>
-          </div>
-        }>
-          <ArRestorationPage setCurrentPage={setCurrentPage} />
-        </Suspense>
-      );
-    }
+   
 
     if (currentPage.startsWith('site-')) {
       const siteId = currentPage.replace('site-', '');
@@ -97,11 +93,12 @@ const AppContent = () => {
     return <HomePage setCurrentPage={setCurrentPage} />;
   };
 
-  return (
+return (
     <div className="min-h-screen bg-white">
       <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {renderPage()}
-      <Footer setCurrentPage={setCurrentPage} />
+      {currentPage !== 'ar' && <Footer setCurrentPage={setCurrentPage} />}
+      {/* {currentPage !== 'ar' && <ARButton onOpen={() => setCurrentPage('ar')} />} */}
     </div>
   );
 };

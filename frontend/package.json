@@ -10,6 +10,8 @@
     "build": "NODE_OPTIONS=--max-old-space-size=4096 vite build"
   },
   "dependencies": {
+    "@google/genai": "^2.8.0",
+    "@google/generative-ai": "^0.24.1",
     "@supabase/supabase-js": "^2.95.3",
     "@uiw/react-md-editor": "^4.1.1",
     "aframe": "^1.7.1",
@@ -17,7 +19,8 @@
     "lucide-react": "^0.562.0",
     "mind-ar": "^1.2.5",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

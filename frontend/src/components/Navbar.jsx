@@ -22,7 +22,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             <button onClick={() => setCurrentPage('home')} className="text-gray-700 hover:text-amber-600 transition">Home</button>
             <button onClick={() => setCurrentPage('sites')} className="text-gray-700 hover:text-amber-600 transition">Heritage Sites</button>
             {user && (
-              <button onClick={() => setCurrentPage('upload')} className="text-gray-700 hover:text-amber-600 transition">Upload Artifact</button>
+              <button onClick={() => setCurrentPage('ar')} className="text-gray-700 hover:text-amber-600 transition">Upload Artifact</button>
             )}
             <button
               onClick={() => setCurrentPage('planner')}
