@@ -91,9 +91,7 @@ const HomePage = ({ setCurrentPage }) => {
               <button
                 onClick={() => setCurrentPage(user ? 'ar' : 'signup')}
                 className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-700 transition flex items-center justify-center space-x-2 shadow-lg"
-                onClick={() => setCurrentPage(user ? 'upload' : 'signup')}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-700 transition flex items-center justify-center space-x-2 shadow-lg shadow-amber-950/20"
-              >
+                >
                 <Camera className="w-5 h-5" />
                 <span>Upload an Artifact</span>
               </button>

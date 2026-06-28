@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import ResultComponent from "./ResultComponent";
 import { Camera, RefreshCw, Upload } from "lucide-react";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const T = {
   en: {
@@ -47,7 +47,7 @@ const T = {
 };
 
 export default function ARPage() {
-  const [lang, setLang]                   = useState("en");
+  const [lang]                   = useState("en");
   const [tab, setTab]                     = useState("camera");
   const [analysing, setAnalysing]         = useState(false);
   const [artifact, setArtifact]           = useState(null);

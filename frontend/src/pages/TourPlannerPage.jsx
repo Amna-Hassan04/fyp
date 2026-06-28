@@ -36,7 +36,7 @@ export default function TourPlannerPage() {
     // Simple frontend optimization check for rapid user blocking
     const forbiddenKeywords = ['code', 'hack', 'script', 'programming', 'math', 'write an essay', 'ignore previous'];
     if (forbiddenKeywords.some(kw => inputPrompt.toLowerCase().includes(kw))) {
-      setErrorMsg('I am a smart tour planner assistant and cannot reply to anything else as my committee profs will check using robust examples.');
+      setErrorMsg('Your request contains prohibited content.');
       setLoading(false);
       return;
     }
@@ -67,7 +67,7 @@ export default function TourPlannerPage() {
       }
     } catch (err) {
       console.error(err);
-      setErrorMsg('Failed to reach backend execution layer. Please ensure your local Uvicorn process is running on port 8000.');
+      setErrorMsg('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -84,7 +84,7 @@ export default function TourPlannerPage() {
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-3">AI Agentic Tour Planner</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Generate verifiable, multi-day historical itineraries managed securely through deterministic guardrails.
+            Tell us where you'd like to explore and we'll build your perfect heritage tour.
           </p>
         </div>
 
@@ -94,11 +94,11 @@ export default function TourPlannerPage() {
           {/* Controls Panel */}
           <div className="md:col-span-5 bg-white p-6 rounded-xl shadow-md border border-gray-100">
             <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-amber-600" /> Configuration Parameters
+              <Sparkles className="w-5 h-5 text-amber-600" /> Plan Your Tour
             </h2>
 
             <div className="space-y-3 mb-6">
-              <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block">Select Demonstration Template</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block">Choose a Popular Route</label>
               {presets.map((preset) => (
                 <button
                   key={preset.id}
@@ -121,7 +121,7 @@ export default function TourPlannerPage() {
             </div>
 
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Custom Itinerary Script Input</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Or describe your own trip</label>
               <textarea
                 value={customQuery}
                 onChange={(e) => setCustomQuery(e.target.value)}
@@ -134,7 +134,7 @@ export default function TourPlannerPage() {
                 disabled={loading}
                 className="w-full bg-amber-600 text-white font-semibold py-3 rounded-lg hover:bg-amber-700 transition shadow-sm disabled:opacity-50"
               >
-                Assemble Agentic Plan
+               Create My Itinerary
               </button>
             </div>
           </div>
@@ -145,10 +145,10 @@ export default function TourPlannerPage() {
             {!loading && !itinerary && !errorMsg && (
               <div className="text-center py-12 px-4 max-w-sm mx-auto">
                 <Upload className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                <h3 className="font-bold text-gray-700 text-base mb-1">Execution Pipeline Idle</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <h3 className="font-bold text-gray-700 text-base mb-1">Ready to Plan Your Tour!</h3>
+                {/* <p className="text-xs text-gray-400 leading-relaxed">
                   Select a standard preset option or dispatch an out-of-scope query to evaluate system guardrails.
-                </p>
+                </p> */}
               </div>
             )}
 
@@ -171,7 +171,7 @@ export default function TourPlannerPage() {
               <div className="space-y-6 w-full animate-fadeIn">
                 <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm border-b pb-3 border-gray-100">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
-                  <span>Agent Chain Complete: Verified Route Validated</span>
+                  <span>Your itinerary is ready!</span>
                 </div>
 
                 {itinerary.map((dayData, idx) => (

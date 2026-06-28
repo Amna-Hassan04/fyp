@@ -48,8 +48,8 @@ app.add_middleware(
 
 # ── AR Setup ──────────────────────────────────────────────────────────────────
 # ── AR Setup ──────────────────────────────────────────────────────────────────
-BASE_DIR = Path(__file__).parent.parent          # → fyp/
-AR_ROOT  = BASE_DIR / "frontend" / "AR"          # → fyp/frontend/AR
+BASE_DIR = Path(__file__).parent       # → fyp/
+AR_ROOT  = BASE_DIR /  "AR"          # → fyp/frontend/AR
 
 INDEX_DIR      = AR_ROOT / "index"
 FRONTEND       = AR_ROOT
