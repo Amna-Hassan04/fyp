@@ -212,7 +212,7 @@ export default function ArRestorationPage() {
               </p>
 
               <iframe
-                src="/ar-sandbox.html"
+                src="../../public/ar-sandbox.html"
                 allow="camera"
                 title="AR Execution Sandbox"
                 style={{ width: '100%', height: '400px', border: '1px solid #c5a880', borderRadius: '6px', backgroundColor: '#000' }}

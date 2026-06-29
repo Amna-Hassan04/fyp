@@ -131,18 +131,18 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="lg:col-span-7 space-y-6 bg-white/95 backdrop-blur-md p-8 rounded-2xl border border-orange-200/80 shadow-md shadow-amber-900/[0.03]">
               <div className="inline-flex items-center space-x-2 bg-amber-600/10 border border-amber-600/20 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 <Upload className="w-3.5 h-3.5" />
-                <span>Module 01: Computer Vision Integration</span>
+                <span>Module 01: AI Image Recognition</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-stone-900 font-sans leading-tight tracking-tight">
-                Physical Artifact Capture
+                Capture Historical Artifacts
               </h2>
               <p className="text-stone-700 text-lg leading-relaxed">
-                Document and archive historical fragments instantly. Simply capture or upload an image of any physical relic discovered at excavation coordinates or national museum exhibitions.
+                Easily save and identify historical objects. Just take a photo or upload an image of an artifact found at archaeological sites or museums.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-600 font-bold mt-0.5">✓</div>
-                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Multi-Class Extraction</strong> Classifies object contours, shapes, and structural patterns dynamically.</p>
+                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Smart Object Detection</strong>      Automatically recognizes the type, shape, and important features of the artifact.</p>
                 </div>
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-600 font-bold mt-0.5">✓</div>
@@ -151,7 +151,7 @@ const HomePage = ({ setCurrentPage }) => {
               </div>
               <div className="pt-2">
                 <button
-                  onClick={() => setCurrentPage(user ? 'upload' : 'signup')}
+                  onClick={() => setCurrentPage(user ? 'ar' : 'signup')}
                   className="bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 rounded-lg transition shadow-md flex items-center gap-2 group text-base"
                 >
                   <span>Launch Artifact Uploader</span>
@@ -167,7 +167,7 @@ const HomePage = ({ setCurrentPage }) => {
                 </div>
                 <div className="flex justify-between items-center text-xs text-stone-500 font-mono pt-1">
                   <span>Status: Image Parsed</span>
-                  <span className="text-emerald-600 font-bold">98.4% Acc</span>
+                  {/* <span className="text-emerald-600 font-bold">98.4% Acc</span> */}
                 </div>
               </div>
             </div>
@@ -199,18 +199,19 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="lg:col-span-7 space-y-6 bg-white/95 backdrop-blur-md p-8 rounded-2xl border border-amber-200/80 shadow-md shadow-amber-900/[0.03]">
               <div className="inline-flex items-center space-x-2 bg-amber-600/10 border border-amber-600/20 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 <Clock className="w-3.5 h-3.5" />
-                <span>Module 02: Knowledge Base Synthesis</span>
+                <span>Module 02: Historical Information</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-stone-900 font-sans leading-tight tracking-tight">
                 Vetted Chronicle Discovery
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Step away from unverified search algorithms. Delve straight into a deeply integrated, descriptive historical ledger context compiling verified knowledge coordinates.
+               Learn about the history, culture, and significance of artifacts through trusted historical sources and research.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-600 font-bold mt-0.5">✓</div>
-                  <p className="text-sm text-gray-600"><strong className="text-stone-900 block mb-0.5">Academic Alignment</strong> Educational profiles mapped cleanly to university and historical research catalogs.</p>
+                  <p className="text-sm text-gray-600"><strong className="text-stone-900 block mb-0.5">        Trusted Historical Sources</strong>       Information collected from museums, researchers, and educational resources.</p>
+
                 </div>
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-600 font-bold mt-0.5">✓</div>
@@ -231,10 +232,10 @@ const HomePage = ({ setCurrentPage }) => {
         </div>
 
         {/* Craftsmanship Divider Line */}
-        <CraftsmanshipBorder />
+        {/* <CraftsmanshipBorder />
 
         {/* MODULE 03: 2D RECONSTRUCTION */}
-        <div className="relative bg-amber-600/[0.035] py-24 overflow-hidden">
+        {/* <div className="relative bg-amber-600/[0.035] py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-fixed bg-center opacity-[0.22] pointer-events-none mix-blend-multiply"
             style={{ backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Katas_Raj_Temples_2.JPG/1280px-Katas_Raj_Temples_2.JPG')` }}
@@ -275,10 +276,10 @@ const HomePage = ({ setCurrentPage }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Craftsmanship Divider Line */}
-        <CraftsmanshipBorder />
+        {/* <CraftsmanshipBorder /> */} 
 
         {/* MODULE 04: AGENTIC TOUR PLANNER */}
         <div className="relative bg-orange-500/[0.045] py-24 overflow-hidden">
@@ -291,18 +292,20 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="lg:col-span-7 space-y-6 bg-white/95 backdrop-blur-md p-8 rounded-2xl border border-orange-200/80 shadow-md shadow-amber-900/[0.03]">
               <div className="inline-flex items-center space-x-2 bg-amber-600/10 border border-amber-600/20 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 <Compass className="w-3.5 h-3.5" />
-                <span>Module 04: Advanced AI Agentic Framework</span>
+                <span>Module 03: Smart Trip Planner</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-stone-900 font-sans leading-tight tracking-tight">
-                Multi-Agent Guardrails
+                 Plan Safe Historical Tours
+
               </h2>
               <p className="text-stone-700 text-lg leading-relaxed">
-                Experience Pakistan's historical treasures securely. Our new agentic framework dynamically designs custom historical expeditions while running programmatic background validation loops against active road closures and live safety alerts.
+                Experience Pakistan's historical treasures securely.  Our AI helps create routes, recommends places to visit, and checks for travel updates and safety information.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-600 font-bold mt-0.5">✓</div>
-                  <p className="text-sm text-gray-600"><strong className="text-stone-900 block mb-0.5">Deterministic Guardrails</strong> Blocks out-of-scope or unrelated requests with zero execution leak.</p>
+                  <p className="text-sm text-gray-600"><strong className="text-stone-900 block mb-0.5">  Personalized Travel Plans</strong>      Creates custom historical tours based on your interests and destination preferences.
+</p>
                 </div>
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-600 font-bold mt-0.5">✓</div>
@@ -353,7 +356,7 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="lg:col-span-7 space-y-6 bg-white/95 backdrop-blur-md p-8 rounded-2xl border border-orange-200/80 shadow-md shadow-amber-900/[0.03]">
               <div className="inline-flex items-center space-x-2 bg-amber-600/10 border border-amber-600/20 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Module 05: Augmented Reality Integration</span>
+                <span>Module 04: Augmented Reality Integration</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-stone-900 font-sans leading-tight tracking-tight">
                 Learn with AR: Reassembling History
@@ -361,17 +364,18 @@ const HomePage = ({ setCurrentPage }) => {
               <p className="text-stone-700 text-lg leading-relaxed">
                 Priceless stucco mural paintings discovered at the <strong>Jinnan Wali Dheri monastery in Taxila</strong> are heavily shattered, presenting massive visual challenges to museum visitors. HeritageAI introduces an interactive tool.
               </p>
-              <p className="text-stone-600 font-sans font-light leading-relaxed text-base">
+              {/* <p className="text-stone-600 font-sans font-light leading-relaxed text-base">
                 Our platform implements a custom computer vision pipeline using Mind-AR. Point your device camera directly at the fragmented artifact tray—the system matches the target image to launch an interactive puzzle challenge that makes historical learning active and engaging.
-              </p>
+              </p> */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-700 font-bold mt-0.5">✓</div>
-                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Camera Feature Tracking</strong> Employs a pre-compiled target matrix to recognize the artifact's unique contours instantly.</p>
+                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Camera Feature Tracking</strong>      Instantly recognizes historical artifacts through your device's camera.</p>
+
                 </div>
                 <div className="flex items-start space-x-3 bg-[#FDFBF7]/90 p-4 rounded-lg border border-stone-200/60">
                   <div className="text-amber-700 font-bold mt-0.5">✓</div>
-                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Interactive Canvas Grid</strong> Uses an HTML5 canvas drawing matrix to handle piece shuffling and swapping dynamically.</p>
+                  <p className="text-sm text-stone-600"><strong className="text-stone-900 block mb-0.5">Interactive Canvas Grid</strong>      Explore artifacts through fun puzzles and hands-on educational activities.</p>
                 </div>
               </div>
               <div className="pt-2">
@@ -486,8 +490,7 @@ const HomePage = ({ setCurrentPage }) => {
           <button
             onClick={() => setCurrentPage(user ? 'ar' : 'signup')}
             className="bg-white text-amber-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition inline-flex items-center space-x-2"
-            onClick={() => setCurrentPage(user ? 'upload' : 'signup')}
-            className="bg-white text-amber-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition inline-flex items-center space-x-2 shadow-md"
+         
           >
             <span>Get Started Free</span>
             <ChevronRight className="w-5 h-5" />

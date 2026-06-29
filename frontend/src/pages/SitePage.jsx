@@ -46,7 +46,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Significance</h2>
           <p className="text-lg text-gray-700 mb-8">{site.significance}</p>
 
-          <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-6 mb-8">
+          {/* <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-6 mb-8">
             <div className="flex items-start space-x-3">
               <Sparkles className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
               <div>
@@ -54,7 +54,7 @@ const SitePage = ({ siteId, setCurrentPage }) => {
                 <p className="text-amber-800">Experience {site.name} in augmented reality. Walk through ancient streets, see reconstructed buildings, and interact with artifacts in their original context.</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Location</h2>
           <div className="rounded-lg overflow-hidden h-96 mb-8">

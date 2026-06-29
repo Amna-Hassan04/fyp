@@ -67,13 +67,13 @@ const ProfilePage = ({ setCurrentPage }) => {
               </div>
             </div>
 
-            {!user?.is_premium && (
+            {/* {!user?.is_premium && (
               <div className="relative overflow-hidden bg-gradient-to-r from-amber-600 to-orange-600 rounded-lg p-5 text-white mb-6 shadow-sm">
                 <div className="absolute -right-2 -bottom-2 opacity-10">
                   <Star className="w-20 h-20" />
                 </div>
 
-                <div className="flex items-center space-x-4 relative z-10">
+                {/* <div className="flex items-center space-x-4 relative z-10">
                   <div className="bg-white/20 p-2 rounded-md backdrop-blur-sm shrink-0">
                     <Sparkles className="w-5 h-5 text-white" />
                   </div>
@@ -91,9 +91,9 @@ const ProfilePage = ({ setCurrentPage }) => {
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
-            )}
+                </div> */}
+              {/* </div>
+            )}  */}
           </div>
         </div>
 
