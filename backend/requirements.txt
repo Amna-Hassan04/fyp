@@ -5,3 +5,7 @@ pillow
 google-generativeai
 python-dotenv
 google-genai
+pydantic
+torch
+torchvision
+opencv-python-headless
