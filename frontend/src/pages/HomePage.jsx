@@ -341,7 +341,7 @@ const HomePage = ({ setCurrentPage }) => {
                 <span>Upload an Artifact</span>
               </button>
               <button
-                onClick={() => setCurrentPage('ar')}
+                onClick={() => setCurrentPage('sites')}
                 className="bg-white text-amber-600 border-2 border-amber-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-50 transition flex items-center justify-center space-x-2 shadow-lg"
               >
                 <MapPin className="w-5 h-5" />

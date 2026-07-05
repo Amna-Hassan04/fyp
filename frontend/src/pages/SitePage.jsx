@@ -227,6 +227,29 @@ const SitePage = ({ siteId, setCurrentPage }) => {
           </div>
         </div>
       </div>
+               {site.references && site.references.length > 0 && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+          <div className="bg-white rounded-2xl border border-stone-200 p-8 shadow-sm">
+            <h3 className="text-xl font-bold text-stone-900 mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-600"></span> References
+            </h3>
+            <ul className="space-y-2">
+              {site.references.map((ref, index) => (
+                <li key={index}>
+                  
+                  <a  href={ref.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-600 hover:text-amber-700 hover:underline text-sm font-medium"
+                  >
+                    {ref.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
 
     </div>
   );
