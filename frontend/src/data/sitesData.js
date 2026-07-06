@@ -30,7 +30,11 @@ export const sitesData = [
       { id: 11, tag: 'architecture', title: 'Mohra Moradu', url: 'https://taxilamuseum.punjab.gov.pk/sites/default/files/inline-images/DJI_0134_5_6.jpg' },
       { id: 12, tag: 'architecture', title: 'Mohra Moradu', url: 'https://taxilamuseum.punjab.gov.pk/sites/default/files/inline-images/DJI_0119_20_21.jpg' }
 
-    ]
+    ],
+    references: [
+    { title: 'Wikipedia — Taxila', url: 'https://en.wikipedia.org/wiki/Taxila' }
+  ]
+
   },
   {
     id: 'mohenjo-daro',
@@ -61,7 +65,10 @@ export const sitesData = [
       { id: 7, tag: 'artifacts', title: 'Indus Valley Terracotta Cylinder Decorated with Fish and Geometric Motifs', url: 'https://static-assets.artlogic.net/w_345,c_limit,f_auto,fl_lossy,q_auto/artlogicstorage/barakatgallery/images/view/a1a6d9f8ea8c16489276ae863af8675fj/barakatgallery-indus-valley-terracotta-cylinder-decorated-with-fish-and-geometric-motifs.-published-9942-3000-bce-2000-bce.jpg' }
 
 
-    ]
+    ],
+    references: [
+    { title: 'Wikipedia — Mohenjo-daro', url: 'https://en.wikipedia.org/wiki/Mohenjo-daro' }
+  ]
   },
   {
     id: 'harappa',
@@ -92,7 +99,10 @@ export const sitesData = [
       { id: 9, tag: 'architecture', title: 'Indus Valley Terracotta Bull', url: 'https://static-assets.artlogic.net/w_1600,h_1600,c_limit,f_auto,fl_lossy,q_auto/artlogicstorage/barakatgallery/images/view/bde6681e9032c95c98105a71980167b7j/barakatgallery-indus-valley-terracotta-sculpture-of-a-bull-3500-bce-2500-bce.jpg' }
 
 
-    ]
+    ],
+    references: [
+    { title: 'Wikipedia — Harrapa', url: 'https://en.wikipedia.org/wiki/Harappa' }
+  ]
   },
   {
     id: 'katas-raj',
@@ -118,7 +128,10 @@ export const sitesData = [
       { id: 4, tag: 'architecture', title: 'Katas Raj Temple', url: 'https://i.pinimg.com/736x/f3/f0/22/f3f022a3e32e2b5b3022ec3ea439d8e9.jpg' },
       { id: 5, tag: 'architecture', title: 'Katas Raj Temple', url: 'https://i.pinimg.com/736x/5d/78/58/5d78588fb6de2e6dab81a12d8a440046.jpg' },
       { id: 6, tag: 'architecture', title: 'Katas Raj Temple', url: 'https://i.pinimg.com/736x/02/19/64/021964854f551527a278519cba1880c1.jpg' }
-    ]
+    ],
+    references: [
+    { title: 'Wikipedia — Kattas Raj Temples', url: 'https://en.wikipedia.org/wiki/Katas_Raj_Temples' }
+  ]
   },
   {
     id: 'makli',
@@ -148,7 +161,10 @@ export const sitesData = [
       { id: 8, tag: 'architecture', title: 'Makli Graveyard', url: 'https://i.pinimg.com/1200x/de/ad/2a/dead2ac718bb89b2772a6e7ecce11f53.jpg' },
       { id: 9, tag: 'architecture', title: 'Makli Graveyard', url: 'https://i.pinimg.com/736x/f9/0b/70/f90b700f7ae813b77ff1d8b6a822d5e8.jpg' }
 
-    ]
+    ],
+    references: [
+    { title: 'Wikipedia — Makli Necropolis', url: 'https://en.wikipedia.org/wiki/Makli_Necropolis' }
+  ]
   },
   {
     id: 'ranikot',
@@ -174,7 +190,10 @@ export const sitesData = [
       { id: 4, tag: 'architecture', title: 'Mountain Ridge Ramparts', url: 'https://media.licdn.com/dms/image/v2/D4D22AQFV44uNjZY6Eg/feedshare-shrink_800/feedshare-shrink_800/0/1700632724767?e=2147483647&v=beta&t=3Goie4EFtut2x2-dvqTCOXffGjag_KJb1jXZpnFX4MU' },
       { id: 5, tag: 'architecture', title: 'Mountain Ridge Ramparts', url: 'https://t3.ftcdn.net/jpg/14/65/03/02/360_F_1465030274_xAUnKyNss9JhUtfO4SbxrkDxF2BSPMhW.jpg' },
       { id: 6, tag: 'architecture', title: 'Mountain Ridge Ramparts', url: 'https://i.pinimg.com/736x/4e/c3/ef/4ec3efe25c8cea93601f5dbedf96c3dd.jpg' }
-    ]
+    ],
+    references: [
+    { title: 'Wikipedia — Ranikot Fort', url: 'https://en.wikipedia.org/wiki/Ranikot_Fort' }
+  ]
   }
 ];
 
