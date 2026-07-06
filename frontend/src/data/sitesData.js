@@ -32,9 +32,12 @@ export const sitesData = [
 
     ],
     references: [
-    { title: 'Wikipedia — Taxila', url: 'https://en.wikipedia.org/wiki/Taxila' }
-  ]
-
+      { title: 'Wikipedia — Taxila', url: 'https://en.wikipedia.org/wiki/Taxila' },
+      { title: 'UNESCO World Heritage Centre — Taxila', url: 'https://whc.unesco.org/en/list/139/' },
+      { title: 'Taxila Museum — Official Site', url: 'https://taxilamuseum.punjab.gov.pk/' },
+      { title: 'Britannica — Taxila: Ancient City, Pakistan', url: 'https://www.britannica.com/place/Taxila' },
+      { title: 'World History Encyclopedia — Taxila', url: 'https://www.worldhistory.org/Taxila/' }
+    ]
   },
   {
     id: 'mohenjo-daro',
@@ -67,8 +70,12 @@ export const sitesData = [
 
     ],
     references: [
-    { title: 'Wikipedia — Mohenjo-daro', url: 'https://en.wikipedia.org/wiki/Mohenjo-daro' }
-  ]
+      { title: 'Wikipedia — Mohenjo-daro', url: 'https://en.wikipedia.org/wiki/Mohenjo-daro' },
+      { title: 'UNESCO World Heritage Centre — Mohenjo-daro', url: 'https://whc.unesco.org/en/list/138/' },
+      { title: 'Britannica — Mohenjo-daro: Ancient City, Pakistan', url: 'https://www.britannica.com/place/Mohenjo-daro' },
+      { title: 'Harappa.com — Mohenjo-daro', url: 'https://www.harappa.com/blog/mohenjo-daro-1960s' },
+      { title: 'National Geographic — Mohenjo-daro', url: 'https://education.nationalgeographic.org/resource/life-ancient-cities/' }
+    ]
   },
   {
     id: 'harappa',
@@ -101,8 +108,12 @@ export const sitesData = [
 
     ],
     references: [
-    { title: 'Wikipedia — Harrapa', url: 'https://en.wikipedia.org/wiki/Harappa' }
-  ]
+      { title: 'Wikipedia — Harappa', url: 'https://en.wikipedia.org/wiki/Harappa' },
+      { title: 'Harappa.com — The Official Website of the Harappa Archaeological Research Project', url: 'https://www.harappa.com/' },
+      { title: 'Britannica — Harappa: Ancient City, Pakistan', url: 'https://www.britannica.com/place/Harappa' },
+      { title: 'UNESCO — Indus Valley Civilization', url: 'https://whc.unesco.org/en/tentativelists/1878/' },
+      { title: 'World History Encyclopedia — Harappa', url: 'https://www.worldhistory.org/article/695/harappa-an-overview-of-harappan-architecture--town/' }
+    ]
   },
   {
     id: 'katas-raj',
@@ -130,8 +141,12 @@ export const sitesData = [
       { id: 6, tag: 'architecture', title: 'Katas Raj Temple', url: 'https://i.pinimg.com/736x/02/19/64/021964854f551527a278519cba1880c1.jpg' }
     ],
     references: [
-    { title: 'Wikipedia — Kattas Raj Temples', url: 'https://en.wikipedia.org/wiki/Katas_Raj_Temples' }
-  ]
+      { title: 'Wikipedia — Katas Raj Temples', url: 'https://en.wikipedia.org/wiki/Katas_Raj_Temples' },
+      { title: ' Academia.edu — Inside Katas Raj Temple for Hindus ', url: 'https://www.academia.edu/12153643/REMINISCENT_OF_HINDUISM_AN_INSIGHT_OF_KATAS_RAJ_MANDIR' },
+      { title: 'UNESCO — Tentative List: Katas Raj Temples', url: 'https://whc.unesco.org/en/tentativelists/6118/' },
+      { title: 'World History — Katas Raj', url: 'https://www.worldhistory.org/Katas_Raj/' },
+      { title: 'Dawn News — 1500 years of our history: Enter the Katas Raj temples', url: 'https://www.dawn.com/news/1256209' }
+    ]
   },
   {
     id: 'makli',
@@ -163,8 +178,12 @@ export const sitesData = [
 
     ],
     references: [
-    { title: 'Wikipedia — Makli Necropolis', url: 'https://en.wikipedia.org/wiki/Makli_Necropolis' }
-  ]
+      { title: 'Wikipedia — Makli Necropolis', url: 'https://en.wikipedia.org/wiki/Makli_Necropolis' },
+      { title: 'UNESCO World Heritage Centre — Historical Monuments at Makli', url: 'https://whc.unesco.org/en/list/143/' },
+      { title: 'Britannica — Makli Necropolis', url: 'https://www.britannica.com/place/Thatta' },
+      { title: 'Archnet — Makli Necropolis', url: 'https://www.archnet.org/sites/1751' },
+      { title: 'BBC Travel — Makli Necropolis', url: 'https://www.bbc.com/travel/article/20140730-in-pakistan-imposing-tombs-that-few-have-seen' }
+    ]
   },
   {
     id: 'ranikot',
@@ -192,8 +211,12 @@ export const sitesData = [
       { id: 6, tag: 'architecture', title: 'Mountain Ridge Ramparts', url: 'https://i.pinimg.com/736x/4e/c3/ef/4ec3efe25c8cea93601f5dbedf96c3dd.jpg' }
     ],
     references: [
-    { title: 'Wikipedia — Ranikot Fort', url: 'https://en.wikipedia.org/wiki/Ranikot_Fort' }
-  ]
+      { title: 'Wikipedia — Ranikot Fort', url: 'https://en.wikipedia.org/wiki/Ranikot_Fort' },
+      { title: 'UNESCO — Tentative List: Ranikot Fort', url: 'https://whc.unesco.org/en/tentativelists/1284/' },
+      { title: 'AirVuz — Ranikot Fort, Sindh', url: 'https://www.airvuz.com/video/Sindh-by-Drone---The-Great-Wall-of-Sindh-and-Kirthar-National-Park-Part-2?id=65a6c94a84a268000826e5ed' },
+      { title: 'Journal of Asian Civilizations — Ranikot Fort (Jamshoro, Sindh): An AMS Radiocarbon Date from Sann (Eastern) Gate', url: 'https://www.dawn.com/news/1266657' },
+      { title: 'Atlas Obscura — Ranikot Fort', url: 'https://www.atlasobscura.com/places/ranikot-fort-defense-wall' }
+    ]
   }
 ];
 
